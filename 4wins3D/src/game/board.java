@@ -1,3 +1,4 @@
+package game;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -320,7 +321,7 @@ public class board {
 		return false;
 	}
 	private boolean positionOccupiedByPlayer(int x, int y, int z, Stone player){
-		System.out.println("Position: " + x + ", " + y + ", " + z + ", Color: " + player);
+	//	System.out.println("Position: " + x + ", " + y + ", " + z + ", Color: " + player);
 		if (state.get(x).get(y).get(z).equals(player)) return true;
 		return false;
 	}

@@ -1,5 +1,7 @@
-import java.util.Random;
+package game;
 import java.util.Scanner;
+
+import players.*;
 
 /**
  * 
@@ -40,12 +42,47 @@ public class game {
 		Stone player = myboard.whosTurn();
 		System.out.println("Player " + player + " starts.");
 		
-		Random random = new Random();
+		String answer = "";
+		System.out.println("Who is the first player? [human/randomKI]");
+		
+		Player player1 = new Player();
+		Player player2 = new Player();
+		do{
+			answer = reader.next();
+			if (answer.equals("h")) {
+				player1 = new Human(player);
+				System.out.println("First player is human.");
+				break;
+			}else if (answer.equals("r")){
+				player1 = new randomKI(player);
+				System.out.println("First player is the randomKI.");
+				break;
+			} else {
+				System.out.println("Sorry, I'm a bit of a racist only humans[h] and KIs[r] allowed.");
+			}
+		}while(true);
+		System.out.println("Who is the second player? [human/randomKI]");
+		do{
+			answer = reader.next();
+			if (answer.equals("h")) {
+				player2 = new Human(player);
+				System.out.println("Second player is human.");
+				break;
+			}else if (answer.equals("r")){
+				player2 = new randomKI(player);
+				System.out.println("Second player is the randomKI.");
+				break;
+			} else {
+			System.out.println("Sorry, I'm a bit of a racist only humans[h] and KIs[r] allowed.");
+			}
+		}while(true);
 		int x = 0;
 		int y = 0;
+		int[] array;
 		for (int i= 1; i< 100; i++){
-			x = random.nextInt(5);
-			y = random.nextInt(5);
+			array = player1.getNextMove(myboard, reader);
+			x = array[0];
+			y = array[1];
 			System.out.println("Player " + player.toString() + " puts his stone into (" + (x+1) + ", " + (y+1) + ")");
 			if (myboard.setStone(x, y, player).equals(player)){
 				System.out.println("Game ends.");
@@ -54,10 +91,9 @@ public class game {
 			myboard.print();
 			player = player.switchColor();
 
-			System.out.println("Enter row:");
-			x = reader.nextInt()-1;
-			System.out.println("Enter column:");
-			y = reader.nextInt()-1;
+			array = player2.getNextMove(myboard, reader);
+			x = array[0];
+			y = array[1];
 			System.out.println("Player " + player.toString() + " puts his stone into (" + (x+1) + ", " + (y+1) + ")");
 			if (myboard.setStone(x, y, player).equals(player)){
 				System.out.println("Game ends.");
