@@ -1,0 +1,41 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+
+public class board {
+
+	private ArrayList<ArrayList<ArrayList<Integer>>> state;
+	private ArrayList<ArrayList<Integer>> plays;
+	
+	public board() {
+		ArrayList<Integer> zeroList = new ArrayList<Integer>(0);
+		for (int i = 0; i <5; i++){
+			zeroList.add(0);
+		}
+		ArrayList<ArrayList<ArrayList<Integer>>> state = new ArrayList<ArrayList<ArrayList<Integer>>>(0);
+		ArrayList<ArrayList<Integer>> plays = new ArrayList<ArrayList<Integer>>(0);
+		for (int i = 0; i <5; i++){
+			state.add(new ArrayList<ArrayList<Integer>>(0));
+			plays.add(zeroList);
+			for (int j = 0; j <5; j++){
+				state.get(i).add(zeroList);
+			}
+		}
+	}
+	
+	public void print(){
+		System.out.println("STATE OF THE BOARD");
+		for (int i = 0; i <5; i++){
+			for (int j = 0; j <5; j++){
+				System.out.println("Postion (" + i + "," + j +")");
+				System.out.println(Arrays.toString(state.get(i).get(j).toArray())); 
+			}
+		}
+		System.out.println("HEIGHT OF NEXT PLAY");
+		for (int i = 0; i <5; i++){
+			System.out.println(Arrays.toString(plays.get(i).toArray()));
+		}
+	}
+
+}

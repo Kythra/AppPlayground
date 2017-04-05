@@ -1,0 +1,54 @@
+import java.util.Random;
+import java.util.Scanner;
+
+/**
+ * 
+ */
+
+/**
+ * @author katja
+ *
+ */
+public class game {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Stone player = Stone.BLACK;
+		board myboard = new board(player);
+		myboard.print();
+		Scanner reader = new Scanner(System.in);
+		
+		Random random = new Random();
+		int x = 0;
+		int y = 0;
+		for (int i= 1; i< 100; i++){
+			x = random.nextInt(5);
+			y = random.nextInt(5);
+			System.out.println("Player " + player.toString() + " puts his stone into (" + (x+1) + ", " + (y+1) + ")");
+			myboard.print();
+			if (myboard.setStone(x, y, player).equals(player)){
+				System.out.println("Game ends.");
+				reader.close();
+				break;
+			}
+			player = player.switchColor();
+
+			System.out.println("Enter row:");
+			x = reader.nextInt()-1;
+			System.out.println("Enter column:");
+			y = reader.nextInt()-1;
+			System.out.println("Player " + player.toString() + " puts his stone into (" + (x+1) + ", " + (y+1) + ")");
+			myboard.print();
+			if (myboard.setStone(x, y, player).equals(player)){
+				System.out.println("Game ends.");
+				reader.close();
+				break;
+			}
+			player = player.switchColor();
+		}
+	}
+
+}

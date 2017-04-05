@@ -1,0 +1,12 @@
+
+public enum Stone {
+	BLACK, WHITE, EMPTY;
+	
+	public String toString(){
+		switch(this){
+		case BLACK: return "B";
+		case WHITE: return "W";
+		default: return "-";
+		}
+	}
+}

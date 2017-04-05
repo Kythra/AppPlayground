@@ -1,0 +1,24 @@
+/**
+ * 
+ */
+
+/**
+ * @author katja
+ *
+ */
+public class game {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		board myboard = new board();
+		myboard.print();
+		Random random = new Random();
+		for (int i= 1; i< 11; i++){
+			Random 
+		}
+	}
+
+}
