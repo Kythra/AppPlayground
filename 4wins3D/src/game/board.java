@@ -61,7 +61,7 @@ public class board {
 	}
 	
 	public Stone whosTurn(){
-		System.out.println("Player " + nextMove.toString() + " is next.");
+	//	System.out.println("Player " + nextMove.toString() + " is next.");
 		return nextMove;
 	}
 	
